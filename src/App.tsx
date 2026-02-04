@@ -1,14 +1,21 @@
-import { Button } from "@mui/material"
+import { ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import theme from './theme/theme';
+
+// pages
+import HomePage from './pages/HomePage';
 
 function App() {
-
   return (
-    <>
-     <div>hello word</div>
-     <Button variant="contained" color="primary">Test primary button</Button>
-     <Button variant="contained" color="secondary">Secondary button</Button>
-    </>
-  )
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
