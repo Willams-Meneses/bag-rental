@@ -1,3 +1,4 @@
+import LoginForm from "@/components/sections/auth/LoginForm"
 import { Checkbox, TextField } from "@mui/material"
 
 const HomePage = () => {
@@ -13,6 +14,12 @@ const HomePage = () => {
       </div>
 
       Form login
+
+      <div style={{
+        marginTop: "20px"
+      }}>
+        <LoginForm />
+      </div>
 
     </div>
   )
