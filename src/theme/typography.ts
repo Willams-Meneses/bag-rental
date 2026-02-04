@@ -48,7 +48,8 @@ export const typographyConfig: TypographyVariantsOptions = {
     fontFamily: '"Plus Jakarta Sans", sans-serif',
     fontSize: '12px',
     fontWeight: 700,
-    lineHeight: '20px'
+    lineHeight: '20px',
+    color: '#4E4E4E'
   },
 
   subtitle1: {
