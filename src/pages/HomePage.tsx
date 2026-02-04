@@ -1,3 +1,4 @@
+import AuthModal from "@/components/sections/auth/AuthModal"
 import LoginForm from "@/components/sections/auth/LoginForm"
 import { Checkbox, TextField } from "@mui/material"
 
@@ -20,6 +21,8 @@ const HomePage = () => {
       }}>
         <LoginForm />
       </div>
+
+      <AuthModal />
 
     </div>
   )

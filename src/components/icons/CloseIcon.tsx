@@ -1,4 +1,4 @@
-export default function CloseIcon({ className = "w-6 h-6" }: { className?: string }) {
+export default function CloseIcon({ className = "w-20 h-20" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
