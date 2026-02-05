@@ -1,15 +1,35 @@
 import { z } from 'zod';
 
-export const loginSchema = z.object({
+// Schema para autenticación (solo email)
+export const authSchema = z.object({
   email: z
     .string()
     .min(1, 'Email is required')
-    .email('Invalid email address'),
+    .pipe(z.string().email('Invalid email address')),
+});
+
+// Schema para login (solo password)
+export const loginSchema = z.object({
   password: z
     .string()
     .min(8, 'Password must be at least 8 characters')
     .max(20, 'Password must be less than 20 characters'),
 });
 
-// Esto te da los tipos automáticamente
+// Schema para register (password + términos y condiciones)
+export const registerSchema = z.object({
+  password: z
+    .string()
+    .min(8, 'Password must be at least 8 characters')
+    .max(20, 'Password must be less than 20 characters'),
+  acceptTerms: z
+    .boolean()
+    .refine((val) => val === true, {
+      message: 'You must accept the terms and conditions',
+    }),
+});
+
+// Tipos automáticos
+export type AuthFormData = z.infer<typeof authSchema>;
 export type LoginFormData = z.infer<typeof loginSchema>;
+export type RegisterFormData = z.infer<typeof registerSchema>;

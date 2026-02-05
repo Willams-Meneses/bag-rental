@@ -1,68 +1,68 @@
-import { Dialog, DialogTitle, DialogContent, DialogActions, Box } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Box } from '@mui/material';
 import CloseIcon from '../icons/CloseIcon';
 
 interface GenericDialogProps {
-    open: boolean;
-    onClose: () => void;
-    title?: string;
-    children: React.ReactNode;
-    actions?: React.ReactNode;
-    showCloseButton?: boolean;
-    maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  open: boolean;
+  onClose: () => void;
+  title?: React.ReactNode;
+  children: React.ReactNode;
+  actions?: React.ReactNode;
+  showCloseButton?: boolean;
+  maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
 export const GenericDialog = ({
-    open,
-    onClose,
-    title,
-    children,
-    actions,
-    showCloseButton = false,
-    maxWidth = 'sm'
+  open,
+  onClose,
+  title,
+  children,
+  actions,
+  showCloseButton = false,
+  maxWidth = 'sm'
 }: GenericDialogProps) => {
-    return (
-        <Dialog
-            open={open}
-            onClose={onClose}
-            maxWidth={maxWidth}
-            fullWidth
-        >
-            {title && (
-                <DialogTitle>
-                    <Box display="flex" justifyContent="space-between" alignItems="center">
-                        {title}
-                        {showCloseButton && (
-                            <Box
-                                onClick={onClose}
-                                sx={{
-                                    cursor: 'pointer',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    width: 24,
-                                    height: 24,
-                                    borderRadius: '4px',
-                                    color: 'white',
-                                    background: 'red'
-                                }}
-                            >
-                                <CloseIcon />
-                            </Box>
+  return (
+    <Dialog 
+      open={open} 
+      onClose={onClose}
+      maxWidth={maxWidth}
+      fullWidth
+    >
+      {title && (
+        <DialogTitle sx={{ p: 0, position: 'relative' }}>
+          <Box sx={{ width: '100%' }}>
+            {title}
+          </Box>
+          {showCloseButton && (
+            <IconButton 
+              onClick={onClose} 
+              size="small"
+              sx={{
+                position: 'absolute',
+                top: 8,
+                right: 8,
+                '&:hover': {
+                  color: 'black'
+                },
+                width: 32,
+                height: 32,
+                color: 'white'
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          )}
+        </DialogTitle>
+      )}
+      
+      <DialogContent sx={{ p: 3}}>
+        {children}
+      </DialogContent>
 
-                        )}
-                    </Box>
-                </DialogTitle>
-            )}
-
-            <DialogContent>
-                {children}
-            </DialogContent>
-
-            {actions && (
-                <DialogActions>
-                    {actions}
-                </DialogActions>
-            )}
-        </Dialog>
-    );
+      {actions && (
+        <DialogActions sx={{ p: 3, pt: 0 }}>
+          {actions}
+        </DialogActions>
+      )}
+    </Dialog>
+  );
 };
