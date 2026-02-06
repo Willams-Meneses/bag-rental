@@ -6,6 +6,7 @@ import GlobalToast from './components/ui/GlobalToast';
 
 // pages
 import HomePage from './pages/HomePage';
+import AuthCallbackPage from './pages/AuthCallbackPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <HomeNavbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/auth/callback" element={<AuthCallbackPage />} />
         </Routes>
         <GlobalToast />
       </BrowserRouter>
